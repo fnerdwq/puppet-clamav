@@ -11,6 +11,10 @@
 #   To which group should the clamav user be added (e.g. amavisd)
 #   *Optional* (defaults to undef)
 #
+# [*database_directory*]
+#   Where the signatures are kept.
+#   *Optional* (defaults to /var/lib/clamav)
+#
 # [*init_freshclam*]
 #   If freshclam should be initiall run to download signatures.
 #   *Optional* (defaults to true)
@@ -28,8 +32,9 @@
 # Copyright 2014 Frederik Wagner
 #
 class clamav (
-  $addgroup = undef,
-  $init_freshclam = true,
+  $addgroup           = undef,
+  $database_directory = '/var/lib/clamav',
+  $init_freshclam     = true,
 ) {
 
   validate_bool($init_freshclam)
