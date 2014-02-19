@@ -1,0 +1,52 @@
+# == Class: clamav
+#
+# This installs and configures clamav/freshclam.
+#
+# This works on Debian.
+# Puppet Version >= 3.4.0
+#
+# === Parameters
+#
+# [*addgroup*]
+#   To which group should the clamav user be added (e.g. amavisd)
+#   *Optional* (defaults to undef)
+#
+# [*init_freshclam*]
+#   If freshclam should be initiall run to download signatures.
+#   *Optional* (defaults to true)
+#
+# === Examples
+#
+# include clamav
+#
+# === Authors
+#
+# Frederik Wagner <wagner@wagit.de>
+#
+# === Copyright
+#
+# Copyright 2014 Frederik Wagner
+#
+class clamav (
+  $addgroup = undef,
+  $init_freshclam = true,
+) {
+
+  validate_bool($init_freshclam)
+
+  contain clamav::freshclam::install
+  contain clamav::freshclam::config
+  contain clamav::freshclam::update
+  contain clamav::install
+  contain clamav::config
+  contain clamav::service
+
+  Class['clamav::freshclam::install']
+  -> Class['clamav::freshclam::config']
+  ~> Class['clamav::freshclam::update']
+  -> Class['clamav::install']
+  -> Class['clamav::config']
+  ~> Class['clamav::service']
+
+
+}
