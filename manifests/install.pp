@@ -10,4 +10,10 @@ class clamav::install {
     ensure => latest,
   }
 
+  if $clamav::clamav_unofficial_sigs {
+    package {'clamav-unofficial-sigs':
+      ensure => latest
+    }
+  }
+
 }

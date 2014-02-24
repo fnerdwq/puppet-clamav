@@ -19,6 +19,10 @@
 #   If freshclam should be initiall run to download signatures.
 #   *Optional* (defaults to true)
 #
+# [*clamav_unofficial_sigs*]
+#   Install the unofficial sigs?
+#   *Optional* (defaults to false)
+#
 # === Examples
 #
 # include clamav
@@ -32,9 +36,10 @@
 # Copyright 2014 Frederik Wagner
 #
 class clamav (
-  $addgroup           = undef,
-  $database_directory = '/var/lib/clamav',
-  $init_freshclam     = true,
+  $addgroup               = undef,
+  $database_directory     = '/var/lib/clamav',
+  $init_freshclam         = true,
+  $clamav_unofficial_sigs = false,
 ) {
 
   validate_bool($init_freshclam)
