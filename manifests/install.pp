@@ -10,7 +10,7 @@ class clamav::install {
     ensure => latest,
   }
 
-  if any2bool($clamav::clamav_unofficial_sigs) {
+  if str2bool($clamav::clamav_unofficial_sigs) {
     package {'clamav-unofficial-sigs':
       ensure => latest
     }
