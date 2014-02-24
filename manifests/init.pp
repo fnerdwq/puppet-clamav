@@ -42,7 +42,8 @@ class clamav (
   $clamav_unofficial_sigs = false,
 ) {
 
-  validate_bool($init_freshclam)
+  validate_bool(str2bool($init_freshclam))
+  validate_bool(str2bool($clamav_unofficial_sigs))
 
   contain clamav::freshclam::install
   contain clamav::freshclam::config
