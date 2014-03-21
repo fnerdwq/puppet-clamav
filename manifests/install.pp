@@ -12,7 +12,8 @@ class clamav::install {
 
   if str2bool($clamav::clamav_unofficial_sigs) {
     package {'clamav-unofficial-sigs':
-      ensure => latest
+      ensure  => latest,
+      require => Package['clamav-daemon']
     }
   }
 

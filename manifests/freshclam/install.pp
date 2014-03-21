@@ -2,7 +2,7 @@
 class clamav::freshclam::install {
 
   package { 'clamav-freshclam':
-    ensure => latest,
+    ensure  => latest,
   }
 
 }
