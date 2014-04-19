@@ -9,3 +9,5 @@ project_page 'https://github.com/fnerdwq/puppet-clamav'
 
 ## Add dependencies, if any:
 dependency 'puppetlabs/stdlib', '>= 4.1.0'
+# if backports is used
+dependency 'puppetlabs/apt', '>= 1.4.0'
