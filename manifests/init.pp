@@ -24,7 +24,7 @@
 #   *Optional* (defaults to false)
 #
 # [*backports*]
-#   Install and pin from Debian Backports?
+#   Install and pin from Debian Backports? Only for clamav-unofficial-sigs!
 #   *Optional* (defaults to false)
 #
 # === Examples
